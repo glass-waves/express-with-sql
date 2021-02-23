@@ -26,13 +26,13 @@ async function run() {
         const user = users[0].rows[0];
 
         await Promise.all(
-            categories.map(module => {
+            categories.map(category => {
                 return client.query(`
                     INSERT INTO categories (category_name)
                     VALUES ($1)
                     RETURNING *;
                 `,
-                    [categories.category_name]);
+                    [category.category_name]);
             })
         );
 

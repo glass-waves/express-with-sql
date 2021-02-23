@@ -27,7 +27,7 @@ async function run() {
                     brand VARCHAR(512) NOT NULL,
                     module_name VARCHAR(512) NOT NULL,
                     image VARCHAR(512) NOT NULL,
-                    category_id VARCHAR(512) NOT NULL REFERENCES categories(id),
+                    category_id INTEGER NOT NULL REFERENCES categories(id),
                     size INTEGER NOT NULL,
                     description TEXT NOT NULL,
                     price INTEGER NOT NULL,
