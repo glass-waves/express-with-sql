@@ -237,5 +237,99 @@ describe('app routes', () => {
       expect(data.body).toEqual(expectation);
     });
 
+    test('adds one module to the database according to req.body data', async () => {
+
+      const newModule = {
+        "_id": "beads",
+        "brand": "Mutable Instruments",
+        "module_name": "Beads",
+        "image": "https://www.perfectcircuit.com/media/catalog/product/cache/31f4f069f336eca018319f55f291a10e/M/u/MutableInstruments_Beads_01.jpg",
+        "category": "effects",
+        "size": 14,
+        "description": "The Clouds clear, and a new day is upon us: Mutable Instruments is back with the successor to their highly sought-after Clouds texture synthesizer, Beads. Beads's theoretical approach remains the same—it is a real-time granular processor, but the improvements over the original module are vast. Higher audio quality, improved interpolation and anti-aliasing, longer buffer, and a faster DSP sampling rate make this a worthy successor.",
+        "price": 359,
+        "in_stock": true,
+      }
+      const expectation = {
+        "id": 7,
+        "_id": "beads",
+        "brand": "Mutable Instruments",
+        "module_name": "Beads",
+        "image": "https://www.perfectcircuit.com/media/catalog/product/cache/31f4f069f336eca018319f55f291a10e/M/u/MutableInstruments_Beads_01.jpg",
+        "category": "effects",
+        "size": 14,
+        "description": "The Clouds clear, and a new day is upon us: Mutable Instruments is back with the successor to their highly sought-after Clouds texture synthesizer, Beads. Beads's theoretical approach remains the same—it is a real-time granular processor, but the improvements over the original module are vast. Higher audio quality, improved interpolation and anti-aliasing, longer buffer, and a faster DSP sampling rate make this a worthy successor.",
+        "price": 359,
+        "in_stock": true,
+        "owner_id": 1
+      }
+
+      const data = await fakeRequest(app)
+        .post('/modules')
+        .send(newModule)
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+
+      const allModules = await fakeRequest(app)
+        .get('/modules')
+        .expect('Content-type', /json/)
+        .expect(200);
+
+      const thisNewModule = allModules.body.find(module => module._id === 'beads');
+
+      expect(thisNewModule).toEqual(expectation);
+    });
+    test('updates module corresponding to id passed into the url', async () => {
+      const newValues = {
+        '_id': 'Beads',
+        'size': 19,
+        'price': 400 
+      }
+      const expectation = [{
+        "id": 7,
+        "_id": "Beads",
+        "brand": "Mutable Instruments",
+        "module_name": "Beads",
+        "image": "https://www.perfectcircuit.com/media/catalog/product/cache/31f4f069f336eca018319f55f291a10e/M/u/MutableInstruments_Beads_01.jpg",
+        "category": "effects",
+        "size": 19,
+        "description": "The Clouds clear, and a new day is upon us: Mutable Instruments is back with the successor to their highly sought-after Clouds texture synthesizer, Beads. Beads's theoretical approach remains the same—it is a real-time granular processor, but the improvements over the original module are vast. Higher audio quality, improved interpolation and anti-aliasing, longer buffer, and a faster DSP sampling rate make this a worthy successor.",
+        "price": 400,
+        "in_stock": true,
+        "owner_id": 1
+      }];
+
+      await fakeRequest(app)
+        .put('/modules/single/7')
+        .send(newValues)
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      const updatedModule = await fakeRequest(app)
+        .get('/modules/single/7')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(updatedModule.body).toEqual(expectation);
+    });
+    test('deletes one module from the database corresponding to the id in path', async () => {
+
+      const data = await fakeRequest(app)
+        .delete('/modules/single/7')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+
+      const deletedModule = await fakeRequest(app)
+        .get('/modules/single/7')
+        .expect('Content-type', /json/)
+        .expect(200);
+
+      
+
+      expect(deletedModule.body).toEqual([]);
+    });
   });
 });
