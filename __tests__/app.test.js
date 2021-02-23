@@ -121,6 +121,7 @@ describe('app routes', () => {
 
       expect(data.body).toEqual(expectation);
     });
+
     test('returns one module corresponding to id', async () => {
 
       const expectation = [
@@ -145,6 +146,7 @@ describe('app routes', () => {
 
       expect(data.body).toEqual(expectation);
     });
+
     test('returns modules sorted by price ascending', async () => {
 
       const expectation =
@@ -281,6 +283,7 @@ describe('app routes', () => {
 
       expect(thisNewModule).toEqual(expectation);
     });
+
     test('updates module corresponding to id passed into the url', async () => {
       const newValues = {
         '_id': 'Beads',
@@ -314,6 +317,7 @@ describe('app routes', () => {
 
       expect(updatedModule.body).toEqual(expectation);
     });
+    
     test('deletes one module from the database corresponding to the id in path', async () => {
 
       const data = await fakeRequest(app)
@@ -331,5 +335,6 @@ describe('app routes', () => {
 
       expect(deletedModule.body).toEqual([]);
     });
+
   });
 });
