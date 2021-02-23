@@ -16,6 +16,10 @@ async function run() {
                     id SERIAL PRIMARY KEY,
                     email VARCHAR(256) NOT NULL,
                     hash VARCHAR(512) NOT NULL
+                );
+                CREATE TABLE categories (
+                    id SERIAL PRIMARY KEY NOT NULL,
+                    category_name VARCHAR(256) NOT NULL
                 );           
                 CREATE TABLE modules (
                     id SERIAL PRIMARY KEY NOT NULL,
@@ -23,7 +27,7 @@ async function run() {
                     brand VARCHAR(512) NOT NULL,
                     module_name VARCHAR(512) NOT NULL,
                     image VARCHAR(512) NOT NULL,
-                    category VARCHAR(512) NOT NULL,
+                    category_id VARCHAR(512) NOT NULL REFERENCES categories(id),
                     size INTEGER NOT NULL,
                     description TEXT NOT NULL,
                     price INTEGER NOT NULL,

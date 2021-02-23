@@ -5,21 +5,23 @@ run();
 
 async function run() {
 
-  try {
-    await client.connect();
-    
-    await client.query(`
+    try {
+        await client.connect();
+
+        await client.query(`
             DROP TABLE IF EXISTS users CASCADE;
-            DROP TABLE IF EXISTS modules;
+            DROP TABLE IF EXISTS modules CASCADE
+            DROP TABLE IF EXISTS categories;
+
         `);
 
-    console.log(' drop tables complete', getEmoji(), getEmoji(), getEmoji());
-  }
-  catch(err) {
-    console.log(err);
-  }
-  finally {
-    client.end();
-  }
-    
+        console.log(' drop tables complete', getEmoji(), getEmoji(), getEmoji());
+    }
+    catch (err) {
+        console.log(err);
+    }
+    finally {
+        client.end();
+    }
+
 }
