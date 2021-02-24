@@ -274,7 +274,7 @@ describe('app routes', () => {
             ]
 
             const data = await fakeRequest(app)
-                .get('/sorted')
+                .get('/sorted/price')
                 .expect('Content-Type', /json/)
                 .expect(200);
 
