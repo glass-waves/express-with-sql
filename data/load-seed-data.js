@@ -3,7 +3,8 @@ const client = require('../lib/client');
 const modules = require('./modules.js');
 const usersData = require('./users.js');
 const { getEmoji } = require('../lib/emoji.js');
-const categories = require('./category-data.js')
+const categories = require('./category-data.js');
+const { findById } = require('./dataUtils');
 
 run();
 
@@ -25,7 +26,7 @@ async function run() {
 
         const user = users[0].rows[0];
 
-        await Promise.all(
+        const categoriesResponse = await Promise.all(
             categories.map(category => {
                 return client.query(`
                     INSERT INTO categories (category_name)
@@ -35,14 +36,28 @@ async function run() {
                     [category.category_name]);
             })
         );
+        const cleanCats = categoriesResponse.map(({ rows }) => rows[0]);
+
 
         await Promise.all(
-            modules.map(module => {
+            modules.map(module => {                
+                const moduleCatId = findById(module.category, cleanCats);
                 return client.query(`
                     INSERT INTO modules (_id, brand, module_name, image, category_id, size, description, price, in_stock, owner_id)
                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);
                 `,
-                    [module._id, module.brand, module.moduleName, module.image, module.category_id, module.size, module.description, module.price, module.inStock, user.id]);
+                    [
+                    module._id, 
+                    module.brand, 
+                    module.moduleName, 
+                    module.image, 
+                    moduleCatId, 
+                    module.size, 
+                    module.description, 
+                    module.price, 
+                    module.inStock, 
+                    user.id
+                    ]);
             })
         );
 

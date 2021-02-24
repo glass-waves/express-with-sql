@@ -288,11 +288,12 @@ describe('app routes', () => {
                 "brand": "Mutable Instruments",
                 "module_name": "Beads",
                 "image": "https://www.perfectcircuit.com/media/catalog/product/cache/31f4f069f336eca018319f55f291a10e/M/u/MutableInstruments_Beads_01.jpg",
-                "category_id": 1,
+                "category": 'oscillator',
                 "size": 14,
                 "description": "The Clouds clear, and a new day is upon us: Mutable Instruments is back with the successor to their highly sought-after Clouds texture synthesizer, Beads. Beads's theoretical approach remains the same—it is a real-time granular processor, but the improvements over the original module are vast. Higher audio quality, improved interpolation and anti-aliasing, longer buffer, and a faster DSP sampling rate make this a worthy successor.",
                 "price": 359,
                 "in_stock": true,
+                
             }
             const expectation = {
                 "id": 8,
@@ -300,8 +301,8 @@ describe('app routes', () => {
                 "brand": "Mutable Instruments",
                 "module_name": "Beads",
                 "image": "https://www.perfectcircuit.com/media/catalog/product/cache/31f4f069f336eca018319f55f291a10e/M/u/MutableInstruments_Beads_01.jpg",
-                "category_id": 1,
                 "size": 14,
+                "category_id": 1,
                 "description": "The Clouds clear, and a new day is upon us: Mutable Instruments is back with the successor to their highly sought-after Clouds texture synthesizer, Beads. Beads's theoretical approach remains the same—it is a real-time granular processor, but the improvements over the original module are vast. Higher audio quality, improved interpolation and anti-aliasing, longer buffer, and a faster DSP sampling rate make this a worthy successor.",
                 "price": 359,
                 "in_stock": true,
