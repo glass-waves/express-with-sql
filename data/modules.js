@@ -1,9 +1,8 @@
 module.exports = [
     {
-        _id: 'chord',
         brand: 'Qu-Bit',
         moduleName: 'Chord V2',
-        image: 'chord.jpg',
+        image: 'https://www.perfectcircuit.com/media/catalog/product/cache/31f4f069f336eca018319f55f291a10e/q/u/qu-bit_chord2_01.jpg',
         category_id: 1,
         category: 'oscillator',
         size: 14,
@@ -12,10 +11,9 @@ module.exports = [
         inStock: true
     },
     {
-        _id: 'ikarie',
         brand: 'BASTL',
         moduleName: 'Ikarie Stereo Filter',
-        image: 'ikarie.jpg',
+        image: 'https://www.perfectcircuit.com/media/catalog/product/cache/31f4f069f336eca018319f55f291a10e/B/A/BASTL_Ikarie_01.jpg',
         category_id: 2,
         category: 'filter',
         size: 8,
@@ -24,10 +22,9 @@ module.exports = [
         inStock: false
     },
     {
-        _id: 'zadar',
         brand: 'XAOC Devices',
         moduleName: 'Zadar Quad Envelope',
-        image: 'zadar.jpg',
+        image: 'https://www.perfectcircuit.com/media/catalog/product/cache/31f4f069f336eca018319f55f291a10e/x/a/xaocdevices_zadar_01_1.jpg',
         category_id: 3,
         category: 'envelope',
         size: 10,
@@ -36,10 +33,9 @@ module.exports = [
         inStock: true
     },
     {
-        _id: 'maths',
         brand: 'Make Noise',
         moduleName: 'Maths',
-        image: 'maths.jpg',
+        image: 'https://www.perfectcircuit.com/media/catalog/product/cache/31f4f069f336eca018319f55f291a10e/m/a/makenoise_maths-2019_01.jpg',
         category_id: 3,
         category: 'envelope',
         size: 20,
@@ -48,10 +44,9 @@ module.exports = [
         inStock: false
     },
     {
-        _id: 'quad-vca',
         brand: 'Intellijel',
         moduleName: 'Quad VCA',
-        image: 'quad-vca.jpg',
+        image: 'https://www.perfectcircuit.com/media/catalog/product/cache/31f4f069f336eca018319f55f291a10e/i/n/intellijel_quadvca_01.jpg',
         category_id: 4,
         category: 'vca',
         size: 12,
@@ -60,10 +55,9 @@ module.exports = [
         inStock: true
     },
     {
-        _id: 'ripples',
         brand: 'Mutable Instruments',
         moduleName: 'Ripples V2 Liquid Filter',
-        image: 'ripples.jpg',
+        image: 'https://www.perfectcircuit.com/media/catalog/product/cache/31f4f069f336eca018319f55f291a10e/M/u/MutableInstruments_Ripples-2020_01.jpg',
         category_id: 2,
         category: 'filter',
         size: 8,
@@ -72,7 +66,6 @@ module.exports = [
         inStock: false
     },
     {
-        _id: 'sto',
         brand: 'Make Noise',
         moduleName: 'STO Oscillator',
         image: 'https://www.perfectcircuit.com/media/catalog/product/cache/956bc3d4a1f4832ce26f24b2860ea032/m/a/makenoise_sto-2021_01.jpg',

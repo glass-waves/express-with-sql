@@ -43,11 +43,10 @@ async function run() {
             modules.map(module => {                
                 const moduleCatId = findById(module.category, cleanCats);
                 return client.query(`
-                    INSERT INTO modules (_id, brand, module_name, image, category_id, size, description, price, in_stock, owner_id)
-                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);
+                    INSERT INTO modules (brand, module_name, image, category_id, size, description, price, in_stock, owner_id)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
                 `,
                     [
-                    module._id, 
                     module.brand, 
                     module.moduleName, 
                     module.image, 

@@ -23,7 +23,6 @@ async function run() {
                 );           
                 CREATE TABLE modules (
                     id SERIAL PRIMARY KEY NOT NULL,
-                    _id VARCHAR(512) NOT NULL,
                     brand VARCHAR(512) NOT NULL,
                     module_name VARCHAR(512) NOT NULL,
                     image VARCHAR(512) NOT NULL,
